@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Card } from './Card.js';
+import { ThemeProvider } from 'emotion-theming'
+import { Controls } from './Controls';
+import { Panel } from './Panel';
+import { theme } from '../styles/theme';
 
-class Panel extends Component {
+class Dashboard extends Component {
   render() {
     /* eslint-disable no-unused-vars */
     const {
@@ -16,11 +19,14 @@ class Panel extends Component {
     } = this.props;
 
     return (
-      <div className="App">
-        <Card hass={hass} entity={hass.states['light.lampadaire_ikea']} />
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <Panel hass={hass} />
+          <Controls hass={hass} />
+        </div>
+      </ThemeProvider>
     );
   }
 }
 
-export default Panel;
+export default Dashboard;

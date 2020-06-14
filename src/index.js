@@ -1,6 +1,6 @@
 import './font.css';
 import './index.css';
-import Panel from './components/Panel';
+import Dashboard from './components/Dashboard';
 import ReactPanelElement from './ReactPanelElement.js';
 
-customElements.define('react-panel', ReactPanelElement(Panel));
+customElements.define('react-panel', ReactPanelElement(Dashboard));

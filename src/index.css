@@ -11,6 +11,8 @@ html, body, .App {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  font-family: 'SF UI Display';
+  display: flex;
 }
 
 @keyframes animate {
