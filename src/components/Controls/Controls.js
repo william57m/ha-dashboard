@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from '@emotion/styled'
-import { CameraCard, LightCard, SlimCard } from './Cards';
+import { CameraCard, LightCard, SlimCard, ThermostatCard } from './Cards';
 import { Title } from '../Common';
 
 const ControlsContainer = styled.div`
   height: 100%;
-  width: 600px;
+  width: 700px;
   padding: 30px;
   box-sizing: border-box;
 `;
 
 const ControlsSection = styled.div`
   margin-bottom: 20px;
-  display: inline-block;
 `
 
 function HueLogo(props) {
@@ -35,6 +34,7 @@ export function Controls(props) {
         <LightCard hass={hass} entity={hass.states['light.lampadaire_ikea']} />
         <LightCard hass={hass} entity={hass.states['light.lumiere_salon']} />
         <LightCard hass={hass} entity={hass.states['light.lumiere_cuisine']} />
+        <ThermostatCard hass={hass} entity={hass.states['climate.thermostat_salon_climate']} />
       </ControlsSection>
       <ControlsSection>
         <Title>Chambre</Title>

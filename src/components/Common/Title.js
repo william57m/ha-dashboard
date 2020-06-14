@@ -6,7 +6,7 @@ const TitleContainer = styled.div`
   font-size: 24px;
   font-weight: normal;
   color: #D0D0D0;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 `;
 
 

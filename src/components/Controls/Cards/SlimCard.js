@@ -16,14 +16,16 @@ const SlimCardLogo = styled(CardLogo)`
 
 const SlimCardName = styled(CardName)`
   left: 40px;
-  top: 14px;
+  top: 20px;
+  bottom: initial;
 `;
 
 export function SlimCard(props) {
+  const state = 'off';
   return (
-    <SlimCardContainer state={props.state} onClick={props.handleToggle}>
+    <SlimCardContainer state={state} onClick={props.handleToggle}>
       <SlimCardLogo>{props.logo}</SlimCardLogo>
-      <SlimCardName state={props.state}>{props.name}</SlimCardName>
+      <SlimCardName state={state}>{props.name}</SlimCardName>
     </SlimCardContainer>
   );
 }

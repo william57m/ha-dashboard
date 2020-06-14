@@ -16,7 +16,7 @@ const Title = styled.div`
   color: #404040;
   padding-left: 10px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: ${props => props.theme.card.text.nameSize};
 `;
 
 const Image = styled.img`

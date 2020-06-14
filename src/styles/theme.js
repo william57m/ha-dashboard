@@ -6,6 +6,10 @@ export const theme = {
       textActive: '#000000CC',
       textInactive: '#FFFFFF33'
     },
+    text: {
+      nameSize: '16px',
+      stateSize: '14px'
+    },
     size: '128px'
   }
 };
