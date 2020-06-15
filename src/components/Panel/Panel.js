@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled'
 import { Title } from '../Common';
-import { DateView } from './Date';
-import { TimeView } from './Time';
-import { WeatherCard } from './Weather';
+import { DateView, TimeView, WeatherCard } from './Widgets';
  
 
 const PanelContainer = styled.div`
