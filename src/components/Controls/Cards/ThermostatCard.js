@@ -13,7 +13,7 @@ const TemperatureLogoContainer = styled.div`
 const TemperatureText = styled.div`
   text-align: center;
   padding-top: 13px;
-  color: #D0D0D0;
+  color: ${props => props.theme.colors.text2};
 `;
 
 function TemperatureLogo(props) {
@@ -24,7 +24,6 @@ function TemperatureLogo(props) {
   )
 }
 export function ThermostatCard(props) {
-  console.log(props.entity);
   return (
     <Card
       logo={<TemperatureLogo temperature={props.entity.attributes.occupied_heating_setpoint} />}

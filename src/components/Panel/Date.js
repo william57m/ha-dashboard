@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled'
 
 const DateContainer = styled.div`
-  color: #6D7278;
+  color: ${props => props.theme.colors.text1};
   font-size: 20px;
 `;
 

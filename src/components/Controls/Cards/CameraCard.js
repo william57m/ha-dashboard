@@ -12,8 +12,8 @@ const Title = styled.div`
   width: 100%;
   height: 30px;
   line-height: 30px;
-  background-color: #D0D0D0;
-  color: #404040;
+  background-color: ${props => props.theme.card.colors.backgroundActive};
+  color: ${props => props.theme.colors.text3};
   padding-left: 10px;
   box-sizing: border-box;
   font-size: ${props => props.theme.card.text.nameSize};

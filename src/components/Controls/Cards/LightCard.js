@@ -25,7 +25,7 @@ export function LightCard(props) {
     const domain = entityId.substr(0, entityId.indexOf('.'));
     props.hass.callService(domain, 'toggle', {
       entity_id: entityId,
-    })
+    });
   }
 
   return (

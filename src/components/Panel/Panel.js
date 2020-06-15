@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from '@emotion/styled'
-import { DateView, TimeView, Title } from '../Common';
+import { Title } from '../Common';
+import { DateView } from './Date';
+import { TimeView } from './Time';
+import { WeatherCard } from './Weather';
+ 
 
 const PanelContainer = styled.div`
   height: 100%;
@@ -12,7 +16,6 @@ const PanelContainer = styled.div`
 `;
 
 const PanelSection = styled.div`
-  height: 20px;
   margin-top: 20px;
 `
 
@@ -24,13 +27,14 @@ export function Panel() {
 
       <PanelSection>
         <Title>Météo</Title>
+        <WeatherCard />
       </PanelSection>
-      <PanelSection>
+      {/* <PanelSection>
         <Title>Rappels</Title>
       </PanelSection>
       <PanelSection>
         <Title>Alarme</Title>
-      </PanelSection>
+      </PanelSection> */}
     </PanelContainer>
   );
 };

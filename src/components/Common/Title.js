@@ -2,10 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled'
 
 const TitleContainer = styled.div`
-  font-family: 'SF UI Display';
-  font-size: 24px;
-  font-weight: normal;
-  color: #D0D0D0;
+  font-size: ${props => props.theme.title.text.size};
+  font-weight: ${props => props.theme.title.text.weight};
+  color: ${props => props.theme.colors.text2};
   margin-bottom: 10px;
 `;
 

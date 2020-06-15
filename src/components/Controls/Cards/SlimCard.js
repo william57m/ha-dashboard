@@ -21,11 +21,10 @@ const SlimCardName = styled(CardName)`
 `;
 
 export function SlimCard(props) {
-  const state = 'off';
   return (
-    <SlimCardContainer state={state} onClick={props.handleToggle}>
+    <SlimCardContainer onClick={props.handleToggle}>
       <SlimCardLogo>{props.logo}</SlimCardLogo>
-      <SlimCardName state={state}>{props.name}</SlimCardName>
+      <SlimCardName>{props.name}</SlimCardName>
     </SlimCardContainer>
   );
 }
