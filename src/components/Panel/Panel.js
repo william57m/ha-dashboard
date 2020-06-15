@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled'
 import { Title } from '../Common';
-import { DateView, TimeView, WeatherCard } from './Widgets';
+import { AlarmCard, DateView, RecallCard, TimeView, WeatherCard } from './Widgets';
  
 
 const PanelContainer = styled.div`
@@ -17,7 +17,7 @@ const PanelSection = styled.div`
   margin-top: 20px;
 `
 
-export function Panel() {
+export function Panel(props) {
   return (
     <PanelContainer>
       <TimeView />
@@ -27,12 +27,15 @@ export function Panel() {
         <Title>Météo</Title>
         <WeatherCard />
       </PanelSection>
-      {/* <PanelSection>
+      <PanelSection>
         <Title>Rappels</Title>
+        <RecallCard hass={props.hass} />
       </PanelSection>
       <PanelSection>
         <Title>Alarme</Title>
-      </PanelSection> */}
+        <AlarmCard hass={props.hass} />
+      </PanelSection>
+
     </PanelContainer>
   );
 };

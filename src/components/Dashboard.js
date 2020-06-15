@@ -17,7 +17,7 @@ class Dashboard extends Component {
       // Panel information that Home Assistant has (including config at panel.config)
       panel,
     } = this.props;
-
+    console.log(hass);
     return (
       <ThemeProvider theme={theme}>
         <div className="App">

@@ -1,0 +1,1 @@
+export { RecallCard } from './RecallCard';

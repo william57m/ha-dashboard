@@ -10,6 +10,7 @@ export const CardContainer = styled.div`
   background-color: ${props => props.state && props.state !== 'off' ? props.theme.card.background.colorActive : props.theme.card.background.colorInactive};
   border-radius:  ${props => props.theme.card.borderRadius};
   margin: 0px 12px 12px 0px;
+  box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
 `;
