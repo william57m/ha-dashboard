@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 const WeatherRowContainer = styled.div`
   width: 100%;
   height: 46px;
-  color: ${props => props.theme.colors.text2};
+  color: ${props => props.theme.colors.textLight};
   position: relative;
 `;
 
@@ -13,7 +13,7 @@ const Time = styled.div`
   top: 7px;
   left: 10px;
   font-size: 14px;
-  color: ${props => props.theme.colors.text1};
+  color: ${props => props.theme.colors.textMedium};
 `;
 const City = styled.div`
   position: absolute;

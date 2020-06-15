@@ -2,7 +2,7 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { Card } from './Card';
 
-const CardPercentage = styled.div`
+const PercentageContainer = styled.div`
   top: 10px;
   right: 10px;
   width: 45px;
@@ -34,7 +34,9 @@ export function LightCard(props) {
       name={props.entity.attributes.friendly_name}
       state={props.entity.state}
       handleToggle={handleToggle}
-    />
+    >
+      <Percentage entity={props.entity} />
+    </Card>
   );
 }
 
@@ -56,12 +58,14 @@ function Percentage(props) {
     const radius = 20.5;
     const circumference = radius * 2 * Math.PI; 
     return (
-      <svg viewBox="0 0 50 50">
-        <circle cx="25" cy="25" r={radius} stroke="#b2b2b2" stroke-width="1.5" fill="none" style={RoundStyle(circumference, brightness)} />
-        <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">
-          {brightness}<tspan font-size="8">%</tspan>
-        </text>
-      </svg>
+      <PercentageContainer>
+        <svg viewBox="0 0 50 50">
+          <circle cx="25" cy="25" r={radius} stroke="#b2b2b2" stroke-width="1.5" fill="none" style={RoundStyle(circumference, brightness)} />
+          <text x="50%" y="54%" fill="#8d8e90" font-size="14" text-anchor="middle" alignment-baseline="middle">
+            {brightness}<tspan font-size="8">%</tspan>
+          </text>
+        </svg>
+      </PercentageContainer>
     );
   } else {
     return null;

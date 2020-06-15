@@ -1,28 +1,37 @@
+const colors = {
+  textLight: '#FFFFFFD0',
+  textMedium: '#FFFFFF60',
+  textDark: '#000000D0',
+
+  backgroundActive: '#FFFFFFD0',
+  backgroundInactive: '#70707040',
+};
+
 export const theme = {
-  colors: {
-    text1: '#FFFFFF40',
-    text2: '#FFFFFFCC',
-    text3: '#000000CC'
-  },
+  colors: colors,
   card: {
-    colors: {
-      backgroundActive: '#FFFFFFCC',
-      backgroundInactive: '#75757540',
-      textActive: '#000000CC',
-      textInactive: '#FFFFFF40'
+    size: '128px',
+    borderRadius: '10px',
+    background: {
+      colorActive: colors.backgroundActive,
+      colorInactive: colors.backgroundInactive,
     },
-    text: {
-      nameSize: '16px',
-      nameWeight: 'normal',
-      stateSize: '14px',
-      stateWeight: '200'
+    name: {
+      size: '16px',
+      weight: 'normal',
+      colorActive: colors.textDark,
+      colorInactive: colors.textMedium,
     },
-    size: '128px'
+    state: {
+      size: '14px',
+      weight: '200',
+      colorActive: colors.textDark,
+      colorInactive: colors.textMedium,
+    },
   },
   title: {
-    text: {
-      size: '24px',
-      weight: 'normal'
-    }
-  }
+    size: '24px',
+    weight: 'normal',
+    color: colors.textLight,
+  },
 };

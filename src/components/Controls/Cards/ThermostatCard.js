@@ -4,16 +4,17 @@ import { Card } from './Card';
 
 
 const TemperatureLogoContainer = styled.div`
-  width: 45px;
-  height: 45px;
-  background-color: #57AA00;
+  width: 40px;
+  height: 40px;
+  background-color: #38B700;
   border-radius: 45px;
 `;
 
 const TemperatureText = styled.div`
   text-align: center;
-  padding-top: 13px;
-  color: ${props => props.theme.colors.text2};
+  padding-top: 12px;
+  font-size: 14px;
+  color: ${props => props.theme.colors.textLight};
 `;
 
 function TemperatureLogo(props) {
@@ -21,8 +22,9 @@ function TemperatureLogo(props) {
     <TemperatureLogoContainer>
       <TemperatureText>{props.temperature}°</TemperatureText>
     </TemperatureLogoContainer>
-  )
+  );
 }
+
 export function ThermostatCard(props) {
   return (
     <Card

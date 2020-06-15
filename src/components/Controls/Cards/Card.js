@@ -7,8 +7,8 @@ export const CardContainer = styled.div`
   display: inline-block;
   width: ${props => props.theme.card.size};
   height: ${props => props.theme.card.size};
-  background-color: ${props => props.state && props.state !== 'off' ? props.theme.card.colors.backgroundActive : props.theme.card.colors.backgroundInactive};
-  border-radius: 10px;
+  background-color: ${props => props.state && props.state !== 'off' ? props.theme.card.background.colorActive : props.theme.card.background.colorInactive};
+  border-radius:  ${props => props.theme.card.borderRadius};
   margin: 0px 12px 12px 0px;
   cursor: pointer;
   overflow: hidden;
@@ -19,22 +19,22 @@ export const CardName = styled.div`
   bottom: 26px;
   left: 10px;
   width: calc(100% - 20px);
-  font-size: ${props => props.theme.card.text.nameSize};
-  font-weight: ${props => props.theme.card.text.nameWeight};
+  font-size: ${props => props.theme.card.name.size};
+  font-weight: ${props => props.theme.card.name.weight};
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${props => props.state && props.state !== 'off' ? props.theme.card.colors.textActive : props.theme.card.colors.textInactive};
+  color: ${props => props.state && props.state !== 'off' ? props.theme.card.name.colorActive : props.theme.card.name.colorInactive};
 `;
 
 export const CardState = styled.div`
   position: absolute;
   bottom: 10px;
   left: 10px;
-  font-size: ${props => props.theme.card.text.stateSize};
-  font-weight: ${props => props.theme.card.text.stateWeight};
+  font-size: ${props => props.theme.card.state.size};
+  font-weight: ${props => props.theme.card.state.weight};
   text-transform: capitalize;
-  color: ${props => props.state && props.state !== 'off' ? props.theme.card.colors.textActive : props.theme.card.colors.textInactive};
+  color: ${props => props.state && props.state !== 'off' ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
 `;
 
 export const CardLogo = styled.div`
@@ -50,6 +50,7 @@ export function Card(props) {
       <CardLogo>{props.logo}</CardLogo>
       <CardName state={props.state}>{props.name}</CardName>
       <CardState state={props.state}>{props.state}</CardState>
+      {props.children}
     </CardContainer>
   );
 }

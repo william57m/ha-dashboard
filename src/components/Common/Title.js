@@ -2,9 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled'
 
 const TitleContainer = styled.div`
-  font-size: ${props => props.theme.title.text.size};
-  font-weight: ${props => props.theme.title.text.weight};
-  color: ${props => props.theme.colors.text2};
+  font-size: ${props => props.theme.title.size};
+  font-weight: ${props => props.theme.title.weight};
+  color: ${props => props.theme.title.color};
   margin-bottom: 10px;
 `;
 

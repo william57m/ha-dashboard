@@ -12,11 +12,11 @@ const Title = styled.div`
   width: 100%;
   height: 30px;
   line-height: 30px;
-  background-color: ${props => props.theme.card.colors.backgroundActive};
-  color: ${props => props.theme.colors.text3};
+  background-color: ${props => props.theme.card.background.colorActive};
+  color: ${props => props.theme.colors.textDark};
   padding-left: 10px;
   box-sizing: border-box;
-  font-size: ${props => props.theme.card.text.nameSize};
+  font-size: ${props => props.theme.card.name.size};
 `;
 
 const Image = styled.img`
