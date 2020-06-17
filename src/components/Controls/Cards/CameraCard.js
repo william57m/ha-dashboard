@@ -6,6 +6,7 @@ import { CardContainer } from './Card';
 const CameraCardContainer = styled(CardContainer)`
   width: 396px;
   height: 240px;
+  padding: 0px;
 `;
 
 const Title = styled.div`

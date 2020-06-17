@@ -13,6 +13,7 @@ export const CardContainer = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
+  padding: 10px;
 `;
 
 export const CardName = styled.div`

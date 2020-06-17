@@ -35,10 +35,10 @@ export function Controls(props) {
         <Title>Caméra</Title>
         <CameraCard hass={hass} entity={hass.states['camera.camera_sejour']} />
       </ControlsSection>
-      <ControlsSection>
+      {/* <ControlsSection>
         <Title>Scènes</Title>
         <SlimCard logo={<div />} name="Tout allumer" />
-      </ControlsSection>
+      </ControlsSection> */}
     </ControlsContainer>
   );
 };
