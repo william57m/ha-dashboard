@@ -6,7 +6,7 @@ import { Card } from './Card';
 const TemperatureLogoContainer = styled.div`
   width: 40px;
   height: 40px;
-  background-color: #38B700;
+  background-color: ${props => props.theme.colors.green};
   border-radius: 45px;
 `;
 

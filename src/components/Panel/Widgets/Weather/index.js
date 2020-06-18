@@ -1,1 +1,1 @@
-export { WeatherCard } from './WeatherCard';
+export { PanelWeather } from './PanelWeather';

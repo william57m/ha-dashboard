@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from '@emotion/styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faCloud,
+  faBolt,
+  faCloudRain,
+  faCloudShowersHeavy,
+  faSnowflake,
+  faSun,
+  faSmog,
+} from '@fortawesome/free-solid-svg-icons';
+
 
 const apiKey = '6fab242a97455d7bbda28668ee6c028c';
 
@@ -38,7 +49,6 @@ const Icon = styled.div`
   top: 13px;
   right: 45px;
   font-size: 18px;
-  color: ${props => props.theme.colors.textMedium};
 `;
 
 export function WeatherRow(props) {
@@ -50,7 +60,8 @@ export function WeatherRow(props) {
     const weatherInfo = {
       temp: Math.floor(result.main.temp),
       main: result.weather[0].main,
-      city: result.name
+      city: result.name,
+      timezone: result.timezone,
     };
     return weatherInfo;
   }
@@ -65,15 +76,43 @@ export function WeatherRow(props) {
   function format2Digits(number) {
     return ('0' + number).slice(-2);
   }
-  const offset = props.offset ? props.offset : 0
-  const date = new Date(new Date().getTime() + (offset * 60) * 60000);
+  
+  let weatherIcon = null;
+  let date = null;
+
+  if (weather) {
+    date = new Date(new Date().getTime() + ((14400 + weather.timezone) / 60) * 60000);
+    switch(weather.main) {
+      case 'Thunderstorm':
+        weatherIcon = <FontAwesomeIcon icon={faBolt} />;
+        break;
+      case 'Drizzle':
+        weatherIcon = <FontAwesomeIcon icon={faCloudRain} />;
+        break;
+      case 'Rain':
+        weatherIcon = <FontAwesomeIcon icon={faCloudShowersHeavy} />;
+        break;
+      case 'Snow':
+        weatherIcon = <FontAwesomeIcon icon={faSnowflake} />;
+        break;
+      case 'Clear':
+        weatherIcon = <FontAwesomeIcon icon={faSun} />;
+        break;
+      case 'Clouds':
+        weatherIcon = <FontAwesomeIcon icon={faCloud} />;
+        break;
+      default:
+        weatherIcon = <FontAwesomeIcon icon={faSmog} />;
+    }
+  }
+
   return (
     <WeatherRowContainer>
       {weather ?
         <React.Fragment>
           <Time>{format2Digits(date.getHours())}:{format2Digits(date.getMinutes())}</Time>
           <City>{weather.city}</City>
-          <Icon>{weather.main}</Icon>
+          <Icon>{weatherIcon}</Icon>
           <Temperature>{weather.temp}&#176;</Temperature>
         </React.Fragment> : null
       }

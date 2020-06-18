@@ -1,6 +1,10 @@
 # HomeAssistant React Dashboard
 
-This project will help you get started with building a custom panel for Home Assistant using the React framework.
+## Motivation
+
+The goal of this project is to have a wall mounted tablet running a dashboard to control my home.
+
+The goal is really to have one screen without any menu so I can have a global view of the more important thing in the home: alarm, lights, camera.
 
 
 ## Getting started

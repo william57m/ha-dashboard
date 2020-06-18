@@ -4,6 +4,7 @@ import styled from '@emotion/styled'
 const DateContainer = styled.div`
   color: ${props => props.theme.colors.textMedium};
   font-size: 20px;
+  text-transform: capitalize;
 `;
 
 export function DateView() {

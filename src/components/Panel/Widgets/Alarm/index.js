@@ -1,1 +1,1 @@
-export { AlarmCard } from './AlarmCard';
+export { PanelAlarm } from './PanelAlarm';

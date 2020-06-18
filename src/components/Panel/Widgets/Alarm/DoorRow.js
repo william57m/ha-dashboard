@@ -1,33 +1,38 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faDoorClosed,
+  faDoorOpen
+} from '@fortawesome/free-solid-svg-icons';
 
 
-const WeatherRowContainer = styled.div`
+const DoorRowContainer = styled.div`
   position: relative;
+  box-size: border-box;
   width: 100%;
-  height: 46px;
-  color: ${props => props.theme.colors.textLight};
+  height: 30px;
+  color: ${props => props.theme.colors.textMedium};
 `;
 
 const Name = styled.div`
-  position: absolute;
-  top: 21px;
-  left: 10px;
-  font-size: ${props => props.theme.card.name.size};
+  font-size: ${props => props.theme.card.state.size};
 `;
 
 const State = styled.div`
   position: absolute;
-  top: 13px;
-  right: 10px;
-  font-size: 18px;
+  top: 5px;
+  right: 5px;
+  font-size: 12px;
 `;
 
 export function DoorRow(props) {
+  const label = props.entity.state === 'on' ? 'Ouvert' : 'Fermé';
+  const icon = props.entity.state === 'on' ? faDoorOpen : faDoorClosed;
   return (
-    <WeatherRowContainer>
+    <DoorRowContainer>
       <Name>{props.entity.attributes.friendly_name}</Name>
-      <State>{props.entity.state}</State>
-    </WeatherRowContainer>
+      <State><FontAwesomeIcon icon={icon} /></State>
+    </DoorRowContainer>
   );
 }

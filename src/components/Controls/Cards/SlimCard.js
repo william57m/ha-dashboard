@@ -4,25 +4,27 @@ import { CardContainer, CardLogo, CardName } from './Card';
 
 
 const SlimCardContainer = styled(CardContainer)`
-  width: 192px;
-  height: 58px;
+  width: ${props => props.width || '192px'};
+  height: ${props => props.height || '58px'};
+  line-height: ${props => props.height || '58px'};
+  display: flex;
+  align-items: center;
 `;
 
-const SlimCardLogo = styled(CardLogo)`
-  left: 10px;
-  top: 16px;
-  width: 26px;
+const SlimCardLogo = styled.div`
+  vertical-align: middle;
+  color: ${props => props.theme.card.name.colorInactive};
+  margin-right: 5px;
 `;
 
-const SlimCardName = styled(CardName)`
-  left: 40px;
-  top: 20px;
-  bottom: initial;
+const SlimCardName = styled.div`
+  font-size: ${props => props.theme.card.name.size};
+  color: ${props => props.theme.card.name.colorInactive};
 `;
 
 export function SlimCard(props) {
   return (
-    <SlimCardContainer onClick={props.handleToggle}>
+    <SlimCardContainer onClick={props.onClick} height={props.height} width={props.width}>
       <SlimCardLogo>{props.logo}</SlimCardLogo>
       <SlimCardName>{props.name}</SlimCardName>
     </SlimCardContainer>

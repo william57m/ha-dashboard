@@ -6,6 +6,7 @@ const TitleContainer = styled.div`
   font-weight: ${props => props.theme.title.weight};
   color: ${props => props.theme.title.color};
   margin-bottom: 10px;
+  position: relative;
 `;
 
 
@@ -15,4 +16,4 @@ export function Title(props) {
       {props.children}
     </TitleContainer>
   );
-};
+}
