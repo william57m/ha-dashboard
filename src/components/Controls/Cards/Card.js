@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
   display: inline-block;
   width: ${props => props.theme.card.size};
   height: ${props => props.theme.card.size};
-  background-color: ${props => props.state && props.state !== 'off' ? props.theme.card.background.colorActive : props.theme.card.background.colorInactive};
+  background-color: ${props => props.state && props.state !== 'off' && props.state !== 'unavailable' ? props.theme.card.background.colorActive : props.theme.card.background.colorInactive};
   border-radius:  ${props => props.theme.card.borderRadius};
   margin: 0px 12px 12px 0px;
   box-sizing: border-box;
@@ -26,7 +26,7 @@ export const CardName = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${props => props.state && props.state !== 'off' ? props.theme.card.name.colorActive : props.theme.card.name.colorInactive};
+  color: ${props => props.state && props.state !== 'off' && props.state !== 'unavailable' ? props.theme.card.name.colorActive : props.theme.card.name.colorInactive};
 `;
 
 export const CardState = styled.div`
@@ -36,7 +36,7 @@ export const CardState = styled.div`
   font-size: ${props => props.theme.card.state.size};
   font-weight: ${props => props.theme.card.state.weight};
   text-transform: capitalize;
-  color: ${props => props.state && props.state !== 'off' ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
+  color: ${props => props.state && props.state !== 'off' && props.state !== 'unavailable' ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
 `;
 
 export const CardLogo = styled.div`
