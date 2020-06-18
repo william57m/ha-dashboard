@@ -13,8 +13,8 @@ const WeatherCardContainer = styled(CardContainer)`
 export function WeatherCard() {
   return (
     <WeatherCardContainer>
-      <WeatherRow city="Montreal" />
-      <WeatherRow city="Saint-Avold" />
+      <WeatherRow city="Montreal,CA" />
+      <WeatherRow city="Saint-Avold,FR" />
     </WeatherCardContainer>
   );
 }

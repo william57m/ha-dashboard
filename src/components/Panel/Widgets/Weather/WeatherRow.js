@@ -1,54 +1,73 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import styled from '@emotion/styled';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faCloud,
-  faBolt,
-  faCloudRain,
-  faCloudShowersHeavy,
-  faSnowflake,
-  faSun,
-  faSmog,
-} from '@fortawesome/free-solid-svg-icons';
 
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import {
+//   faCloud,
+//   faBolt,
+//   faCloudRain,
+//   faCloudShowersHeavy,
+//   faSnowflake,
+//   faSun,
+//   faSmog,
+// } from '@fortawesome/free-solid-svg-icons';
+
+// Weather icons
+import {
+  DayClearIcon,
+  DayPartlyCloudyIcon,
+  NightClearIcon,
+  NightPartlyCloudyIcon,
+  FogIcon,
+  CloudyIcon,
+  ShowerIcon,
+  SnowIcon,
+  ThunderstormIcon,
+} from '../../../../resources/icon/weather';
 
 const apiKey = '6fab242a97455d7bbda28668ee6c028c';
 
 const WeatherRowContainer = styled.div`
-  position: relative;
   width: 100%;
   height: 46px;
-  color: ${props => props.theme.colors.textLight};
+  display: flex;
+  padding: 10px;
+  align-items: center;
+  box-sizing: border-box;
+`;
+
+const TimeCityContainer = styled.div`
+  flex-grow: 1;
 `;
 
 const Time = styled.div`
-  position: absolute;
-  top: 7px;
-  left: 10px;
   color: ${props => props.theme.colors.textMedium};
   font-size: ${props => props.theme.card.state.size};
 `;
 
 const City = styled.div`
-  position: absolute;
-  top: 21px;
-  left: 10px;
+  color: ${props => props.theme.colors.textLight};
   font-size: ${props => props.theme.card.name.size};
 `;
 
 const Temperature = styled.div`
-  position: absolute;
-  top: 13px;
-  right: 10px;
+  width: 36px;
+  text-align: right;
+  color: ${props => props.theme.colors.textLight};
   font-size: 18px;
 `;
 
 const Icon = styled.div`
-  position: absolute;
-  top: 13px;
-  right: 45px;
-  font-size: 18px;
+  width: 22px;
+  text-align: center;
+`;
+
+const Image = styled.img`
+  height: auto;
+  width: auto;
+  max-height: 18px;
+  max-width: 22px;
 `;
 
 export function WeatherRow(props) {
@@ -62,6 +81,7 @@ export function WeatherRow(props) {
       main: result.weather[0].main,
       city: result.name,
       timezone: result.timezone,
+      iconId: result.weather[0].icon
     };
     return weatherInfo;
   }
@@ -82,27 +102,85 @@ export function WeatherRow(props) {
 
   if (weather) {
     date = new Date(new Date().getTime() + ((14400 + weather.timezone) / 60) * 60000);
-    switch(weather.main) {
-      case 'Thunderstorm':
-        weatherIcon = <FontAwesomeIcon icon={faBolt} />;
+    // switch(weather.main) {
+    //   case 'Thunderstorm':
+    //     weatherIcon = faBolt;
+    //     break;
+    //   case 'Drizzle':
+    //     weatherIcon = faCloudRain;
+    //     break;
+    //   case 'Rain':
+    //     weatherIcon = faCloudShowersHeavy;
+    //     break;
+    //   case 'Snow':
+    //     weatherIcon = faSnowflake;
+    //     break;
+    //   case 'Clear':
+    //     weatherIcon = faSun;
+    //     break;
+    //   case 'Clouds':
+    //     weatherIcon = faCloud;
+    //     break;
+    //   default:
+    //     weatherIcon = faSmog;
+    // }
+    switch(weather.iconId) {
+      case '01d': // Clear
+        weatherIcon = DayClearIcon;
         break;
-      case 'Drizzle':
-        weatherIcon = <FontAwesomeIcon icon={faCloudRain} />;
+      case '01n':
+        weatherIcon = NightClearIcon;
         break;
-      case 'Rain':
-        weatherIcon = <FontAwesomeIcon icon={faCloudShowersHeavy} />;
+      case '02d': // Partly Cloudy
+        weatherIcon = DayPartlyCloudyIcon;
         break;
-      case 'Snow':
-        weatherIcon = <FontAwesomeIcon icon={faSnowflake} />;
+      case '02n':
+        weatherIcon = NightPartlyCloudyIcon;
         break;
-      case 'Clear':
-        weatherIcon = <FontAwesomeIcon icon={faSun} />;
+      case '03d': // Cloud
+        weatherIcon = CloudyIcon;
         break;
-      case 'Clouds':
-        weatherIcon = <FontAwesomeIcon icon={faCloud} />;
+      case '03n':
+        weatherIcon = CloudyIcon;
+        break;
+      case '04d': // Heavy cloud
+        weatherIcon = CloudyIcon;
+        break;
+      case '04n':
+        weatherIcon = CloudyIcon;
+        break;
+      case '09d': // Light Rain
+        weatherIcon = ShowerIcon;
+        break;
+      case '09n':
+        weatherIcon = ShowerIcon;
+        break;
+      case '10d': // Heavy Rain
+        weatherIcon = ShowerIcon;
+        break;
+      case '10n':
+        weatherIcon = ShowerIcon;
+        break;
+      case '11d': // Thunderstorm
+        weatherIcon = ThunderstormIcon;
+        break;
+      case '11n':
+        weatherIcon = ThunderstormIcon;
+        break;
+      case '13d': // Snow
+        weatherIcon = SnowIcon;
+        break;
+      case '13n':
+        weatherIcon = SnowIcon;
+        break;
+      case '50d': // Mist
+        weatherIcon = FogIcon;
+        break;
+      case '50n':
+        weatherIcon = FogIcon;
         break;
       default:
-        weatherIcon = <FontAwesomeIcon icon={faSmog} />;
+        weatherIcon = CloudyIcon;
     }
   }
 
@@ -110,9 +188,11 @@ export function WeatherRow(props) {
     <WeatherRowContainer>
       {weather ?
         <React.Fragment>
-          <Time>{format2Digits(date.getHours())}:{format2Digits(date.getMinutes())}</Time>
-          <City>{weather.city}</City>
-          <Icon>{weatherIcon}</Icon>
+          <TimeCityContainer>
+            <Time>{format2Digits(date.getHours())}:{format2Digits(date.getMinutes())}</Time>
+            <City>{weather.city}</City>
+          </TimeCityContainer>
+          <Icon><Image src={weatherIcon} /></Icon>
           <Temperature>{weather.temp}&#176;</Temperature>
         </React.Fragment> : null
       }
