@@ -27,11 +27,22 @@ const ButtonsContainer = styled.div`
 `
 
 export function AlarmCard(props) {
+  const { state } = props.hass.states['alarm_control_panel.alarme'];
   const isMaina = parseInt(props.hass.states['sensor.iphone_de_maina_occupancy_confidence'].state) == 100;
   const isWilliam = parseInt(props.hass.states['sensor.iphone_de_william_occupancy_confidence'].state) == 100;
 
-  function handleArm() {
+  function handleArmAway() {
     props.hass.callService('alarm_control_panel', 'alarm_arm_away', {
+      entity_id: 'alarm_control_panel.alarme',
+    });
+  }
+  function handleArmNight() {
+    props.hass.callService('alarm_control_panel', 'alarm_arm_night', {
+      entity_id: 'alarm_control_panel.alarme',
+    });
+  }
+  function handleDisarm() {
+    props.hass.callService('alarm_control_panel', 'alarm_disarm', {
       entity_id: 'alarm_control_panel.alarme',
     });
   }
@@ -49,20 +60,31 @@ export function AlarmCard(props) {
 
       <Title>Alarme</Title>
       <ButtonsContainer>
-        <SlimCard
-          logo={<FontAwesomeIcon icon={faShieldAlt} />}
-          name="Armer absent"
-          onClick={handleArm}
-          height="40px"
-          width="50%"
-        />
-        <SlimCard
-          logo={<FontAwesomeIcon icon={faMoon} />}
-          name="Armer nuit"
-          onClick={handleArm}
-          height="40px"
-          width="50%"
-        />
+        {state === 'disarmed' ?
+          <React.Fragment>
+            <SlimCard
+              logo={<FontAwesomeIcon icon={faShieldAlt} />}
+              name="Armer absent"
+              onClick={handleArmAway}
+              height="40px"
+              width="50%"
+            />
+            <SlimCard
+              logo={<FontAwesomeIcon icon={faMoon} />}
+              name="Armer nuit"
+              onClick={handleArmNight}
+              height="40px"
+              width="50%"
+            />
+          </React.Fragment> :
+          <SlimCard
+            logo={<FontAwesomeIcon icon={faShieldAlt} />}
+            name="Désarmer"
+            onClick={handleDisarm}
+            height="40px"
+            width="100%"
+          />
+        }
       </ButtonsContainer>
     </AlarmCardContainer>
   );

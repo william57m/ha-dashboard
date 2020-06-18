@@ -8,6 +8,7 @@ const colors = {
 
   red: '#BD0909',
   green: '#38B700',
+  blue: '#0094FF',
 };
 
 export const theme = {
