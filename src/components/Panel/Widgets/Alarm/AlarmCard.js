@@ -24,6 +24,7 @@ const Title = styled.div`
 
 const ButtonsContainer = styled.div`
   display: flex;
+  justify-content: space-between;
 `
 
 export function AlarmCard(props) {
@@ -67,14 +68,14 @@ export function AlarmCard(props) {
               name="Armer absent"
               onClick={handleArmAway}
               height="40px"
-              width="50%"
+              width="49%"
             />
             <SlimCard
               logo={<FontAwesomeIcon icon={faMoon} />}
               name="Armer nuit"
               onClick={handleArmNight}
               height="40px"
-              width="50%"
+              width="49%"
             />
           </React.Fragment> :
           <SlimCard
@@ -83,6 +84,7 @@ export function AlarmCard(props) {
             onClick={handleDisarm}
             height="40px"
             width="100%"
+            margin="0px"
           />
         }
       </ButtonsContainer>

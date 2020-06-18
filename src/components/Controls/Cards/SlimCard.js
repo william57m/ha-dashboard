@@ -6,6 +6,7 @@ import { CardContainer, CardLogo, CardName } from './Card';
 const SlimCardContainer = styled(CardContainer)`
   width: ${props => props.width || '192px'};
   height: ${props => props.height || '58px'};
+  margin: 0px;
   line-height: ${props => props.height || '58px'};
   display: flex;
   align-items: center;

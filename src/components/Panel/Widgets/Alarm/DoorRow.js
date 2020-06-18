@@ -8,22 +8,19 @@ import {
 
 
 const DoorRowContainer = styled.div`
-  position: relative;
-  box-size: border-box;
+  display: flex;
   width: 100%;
   height: 30px;
   color: ${props => props.theme.colors.textMedium};
 `;
 
 const Name = styled.div`
-  font-size: ${props => props.theme.card.state.size};
+  font-size: ${props => props.theme.card.name.size};
+  flex-grow: 1;
 `;
 
 const State = styled.div`
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  font-size: 12px;
+  font-size: ${props => props.theme.card.name.size};;
 `;
 
 export function DoorRow(props) {
