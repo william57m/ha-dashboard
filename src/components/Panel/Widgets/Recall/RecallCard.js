@@ -9,7 +9,7 @@ export function RecallCard(props) {
         props.notifications.map((key) => 
           <RecallRow key={key} hass={props.hass} entity={props.hass.states[key]} />
         ) :
-        <RecallRow message={'Aucun rappel'} />
+        <RecallRow inactive message={'Aucun rappel'} />
       }
     </React.Fragment>
   );

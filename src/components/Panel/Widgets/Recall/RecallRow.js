@@ -5,7 +5,7 @@ import { CardContainer } from '../../../Controls/Cards/Card';
 const RecallRowContainer = styled(CardContainer)`
   position: relative;
   width: 100%;
-  color: ${props => props.theme.colors.textLight};
+  color: ${props => props.inactive ? props.theme.colors.textMedium : props.theme.colors.textLight};
   height: initial;
 `;
 
@@ -22,7 +22,7 @@ export function RecallRow(props) {
     }
   }
   return (
-    <RecallRowContainer onClick={handleDismiss}>
+    <RecallRowContainer onClick={handleDismiss} inactive={props.inactive}>
       <Description>{props.message || props.entity.attributes.message}</Description>
     </RecallRowContainer>
   );
