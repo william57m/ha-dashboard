@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { CardContainer, CardLogo, CardName } from './Card';
+
+import { CardContainer } from './Card';
 
 
 const SlimCardContainer = styled(CardContainer)`

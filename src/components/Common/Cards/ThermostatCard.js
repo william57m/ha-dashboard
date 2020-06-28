@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+
 import { Card } from './Card';
 
 
@@ -25,12 +26,15 @@ function TemperatureLogo(props) {
   );
 }
 
+
 export function ThermostatCard(props) {
+
   return (
     <Card
-      logo={<TemperatureLogo temperature={props.entity.attributes.occupied_heating_setpoint} />}
-      name={props.entity.attributes.friendly_name}
-      state={props.entity.state}
+      isActive={props.isActive}
+      logo={<TemperatureLogo temperature={props.heatingSetpoint} />}
+      name={props.name}
+      state={props.state}
     />
   );
 }

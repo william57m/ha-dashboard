@@ -2,10 +2,9 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShieldAlt, faMoon } from '@fortawesome/free-solid-svg-icons';
-import { CardContainer } from '../../../Controls/Cards/Card';
+import { CardContainer, SlimCard } from '../../Cards';
 import { DoorRow } from './DoorRow';
 import { ProfilePicture } from './ProfilePicture';
-import { SlimCard} from '../../../Controls/Cards/SlimCard';
 import PhotoWilliam from '../../../../resources/william.jpg'
 import PhotoMaina from '../../../../resources/maina.jpg'
 import PhotoRuby from '../../../../resources/ruby.jpg'

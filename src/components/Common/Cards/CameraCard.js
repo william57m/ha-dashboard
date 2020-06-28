@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled'
+
 import { CardContainer } from './Card';
 
 
@@ -27,8 +28,8 @@ const Image = styled.img`
 export function CameraCard(props) {
   return (
     <CameraCardContainer>
-      <Title>{props.entity.attributes.friendly_name}</Title>
-      <Image src={props.entity.attributes.entity_picture} />
+      <Title>{props.name}</Title>
+      <Image src={props.imageSrc} />
     </CameraCardContainer>
   );
 }

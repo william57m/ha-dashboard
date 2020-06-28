@@ -6,7 +6,7 @@ import {
   PanelRecall,
   PanelWeather,
   TimeView,
-} from './Widgets';
+} from '../Common/Widgets';
 
 
 const PanelContainer = styled.div`

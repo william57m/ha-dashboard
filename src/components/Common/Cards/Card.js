@@ -7,7 +7,7 @@ export const CardContainer = styled.div`
   display: inline-block;
   width: ${props => props.theme.card.size};
   height: ${props => props.theme.card.size};
-  background-color: ${props => props.state && props.state !== 'off' && props.state !== 'unavailable' ? props.theme.card.background.colorActive : props.theme.card.background.colorInactive};
+  background-color: ${props => props.isActive ? props.theme.card.background.colorActive : props.theme.card.background.colorInactive};
   border-radius:  ${props => props.theme.card.borderRadius};
   margin: 0px 12px 12px 0px;
   box-sizing: border-box;
@@ -26,7 +26,7 @@ export const CardName = styled.div`
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: ${props => props.state && props.state !== 'off' && props.state !== 'unavailable' ? props.theme.card.name.colorActive : props.theme.card.name.colorInactive};
+  color: ${props => props.isActive ? props.theme.card.name.colorActive : props.theme.card.name.colorInactive};
 `;
 
 export const CardState = styled.div`
@@ -36,7 +36,7 @@ export const CardState = styled.div`
   font-size: ${props => props.theme.card.state.size};
   font-weight: ${props => props.theme.card.state.weight};
   text-transform: capitalize;
-  color: ${props => props.state && props.state !== 'off' && props.state !== 'unavailable' ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
+  color: ${props => props.isActive ? props.theme.card.state.colorActive : props.theme.card.state.colorInactive};
 `;
 
 export const CardLogo = styled.div`
@@ -46,12 +46,39 @@ export const CardLogo = styled.div`
   width: 45px;
 `;
 
+var buttonPressTimer;
+
 export function Card(props) {
+
+  function handlePress() {
+    if (props.handlePress) {
+      props.handlePress();
+    }
+  }
+
+  function handleButtonPress () {
+    if (props.handleLongPress) {
+      buttonPressTimer = setTimeout(() => props.handleLongPress(), 1000);
+    }
+  }
+
+  function handleButtonRelease () {
+    clearTimeout(buttonPressTimer);
+  }
+
   return (
-    <CardContainer state={props.state} onClick={props.handleToggle}>
+    <CardContainer
+      isActive={props.isActive}
+      onClick={handlePress}
+      onTouchStart={handleButtonPress} 
+      onTouchEnd={handleButtonRelease} 
+      onMouseDown={handleButtonPress} 
+      onMouseUp={handleButtonRelease} 
+      onMouseLeave={handleButtonRelease}
+    >
       <CardLogo>{props.logo}</CardLogo>
-      <CardName state={props.state}>{props.name}</CardName>
-      <CardState state={props.state}>{props.state}</CardState>
+      <CardName isActive={props.isActive}>{props.name}</CardName>
+      <CardState isActive={props.isActive}>{props.state}</CardState>
       {props.children}
     </CardContainer>
   );

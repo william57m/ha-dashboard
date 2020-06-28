@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { WeatherRow } from './WeatherRow';
-import { CardContainer } from '../../../Controls/Cards/Card';
+import { CardContainer } from '../../../Common/Cards';
 
 
 const WeatherCardContainer = styled(CardContainer)`

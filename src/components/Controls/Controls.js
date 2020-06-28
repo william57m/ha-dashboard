@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled'
-import { CameraCard, LightCard, SlimCard, ThermostatCard } from './Cards';
+import { SlimCard } from '../Common/Cards';
+import { CameraCard, LightCard, ThermostatCard } from '../Common/HassCards';
 import { Title } from '../Common';
 
 
@@ -21,24 +22,25 @@ export function Controls(props) {
     <ControlsContainer>
       <ControlsSection>
         <Title>Séjour</Title>
-        <LightCard hass={hass} entity={hass.states['light.lampadaire_ikea']} />
-        <LightCard hass={hass} entity={hass.states['light.lumiere_salon']} />
-        <LightCard hass={hass} entity={hass.states['light.lumiere_cuisine']} />
-        <ThermostatCard hass={hass} entity={hass.states['climate.thermostat_salon_climate']} />
+        <LightCard hass={hass} entityId="light.lampadaire_ikea" />
+        <LightCard hass={hass} entityId="light.lumiere_salon" />
+        <LightCard hass={hass} entityId="light.lumiere_cuisine" />
+        <ThermostatCard hass={hass} entityId="climate.thermostat_salon_climate" />
+        {/* <ThermostatCard hass={hass} entityId="climate.climatisation" /> */}
       </ControlsSection>
       <ControlsSection>
         <Title>Chambre</Title>
-        <LightCard hass={hass} entity={hass.states['light.lampe_chevet_gauche']} />
-        <LightCard hass={hass} entity={hass.states['light.lampe_chevet_droite']} />
+        <LightCard hass={hass} entityId="light.lampe_chevet_gauche" />
+        <LightCard hass={hass} entityId="light.lampe_chevet_droite" />
       </ControlsSection>
       <ControlsSection>
         <Title>Caméra</Title>
-        <CameraCard hass={hass} entity={hass.states['camera.camera_sejour']} />
+        <CameraCard hass={hass} entityId="camera.camera_sejour" />
       </ControlsSection>
-      {/* <ControlsSection>
+      <ControlsSection>
         <Title>Scènes</Title>
         <SlimCard logo={<div />} name="Tout allumer" />
-      </ControlsSection> */}
+      </ControlsSection>
     </ControlsContainer>
   );
 };

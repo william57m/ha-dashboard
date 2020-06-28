@@ -9,6 +9,8 @@ const colors = {
   red: '#BD0909',
   green: '#38B700',
   blue: '#0094FF',
+
+  lightActive: '#ECC344'
 };
 
 export const theme = {
@@ -32,6 +34,10 @@ export const theme = {
       colorActive: colors.textDark,
       colorInactive: colors.textMedium,
     },
+    light: {
+      colorActive: colors.lightActive,
+      colorInactive: colors.textMedium
+    }
   },
   badgeCount: {
     color: colors.red
