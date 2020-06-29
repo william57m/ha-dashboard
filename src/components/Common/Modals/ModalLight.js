@@ -120,6 +120,15 @@ const Slider = styled.input`
 
 var timeout;
 
+const predefinedColors = [
+  "#AB7A47",
+  "#EBA761",
+  "#F2C596",
+  "#7561ED",
+  "#B1AFB8",
+  "turquoise",
+]
+
 export function ModalLight(props) {
   const brightness = Math.floor(props.entity.attributes.brightness*100/255);
   const [percentage, setPercentage] = useState(brightness);
@@ -168,12 +177,9 @@ export function ModalLight(props) {
             />
           </SliderContainer>
           <ColorsContainer>
-            <Color color="#AB7A47" onClick={() => handleColorChange('#AB7A47')} />
-            <Color color="#EBA761" onClick={() => handleColorChange('#EBA761')} />
-            <Color color="#F2C596" onClick={() => handleColorChange('#F2C596')} />
-            <Color color="#7561ED" onClick={() => handleColorChange('#7561ED')} />
-            <Color color="#B1AFB8" onClick={() => handleColorChange('#B1AFB8')} />
-            <Color color="turquoise" onClick={() => handleColorChange('turquoise')} />
+            {predefinedColors.map((color) => (
+              <Color key={color} color={color} onClick={() => handleColorChange(color)} />
+            ))}
           </ColorsContainer>
         </ModalContent>
       </ModalContainer>

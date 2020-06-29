@@ -11,6 +11,7 @@ const SlimCardContainer = styled(CardContainer)`
   line-height: ${props => props.height || '58px'};
   display: flex;
   align-items: center;
+  ${props => props.css};
 `;
 
 const SlimCardLogo = styled.div`
@@ -24,9 +25,38 @@ const SlimCardName = styled.div`
   color: ${props => props.theme.card.name.colorInactive};
 `;
 
+var buttonPressTimer;
+
 export function SlimCard(props) {
+
+  function handlePress() {
+    if (props.handlePress) {
+      props.handlePress();
+    }
+  }
+
+  function handleButtonPress () {
+    if (props.handleLongPress) {
+      buttonPressTimer = setTimeout(() => props.handleLongPress(), 1000);
+    }
+  }
+
+  function handleButtonRelease () {
+    clearTimeout(buttonPressTimer);
+  }
+
   return (
-    <SlimCardContainer onClick={props.onClick} height={props.height} width={props.width}>
+    <SlimCardContainer
+      css={props.css}
+      isActive={props.isActive}
+      onClick={handlePress}
+      onTouchStart={handleButtonPress} 
+      onTouchEnd={handleButtonRelease} 
+      onMouseDown={handleButtonPress} 
+      onMouseUp={handleButtonRelease} 
+      onMouseLeave={handleButtonRelease}
+      height={props.height} width={props.width}
+    > 
       <SlimCardLogo>{props.logo}</SlimCardLogo>
       <SlimCardName>{props.name}</SlimCardName>
     </SlimCardContainer>
