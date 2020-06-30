@@ -3,6 +3,7 @@ export {
   CardContainer,
   CardName,
   CardState,
+  CardTitle,
   CardLogo,
 } from './Card';
 

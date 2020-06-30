@@ -1,5 +1,5 @@
+export { AlarmCard } from './Alarm';
 export { DateView } from './Date';
-export { PanelAlarm } from './Alarm';
-export { PanelRecall } from './Recall';
-export { PanelWeather } from './Weather';
+export { RecallCard } from './Recall';
 export { TimeView } from './Time';
+export { WeatherCard } from './Weather';

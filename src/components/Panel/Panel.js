@@ -1,13 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled'
 import {
+  AlarmCard,
   DateView,
-  PanelAlarm,
-  PanelRecall,
-  PanelWeather,
+  RecallCard,
   TimeView,
+  WeatherCard,
 } from '../Common/Widgets';
-
+import { PanelSection } from '../Common/Widgets/Common/PanelSection';
 
 const PanelContainer = styled.div`
   height: 100%;
@@ -23,9 +23,15 @@ export function Panel(props) {
     <PanelContainer>
       <TimeView />
       <DateView />
-      <PanelWeather hass={props.hass} />
-      <PanelRecall hass={props.hass} />
-      <PanelAlarm hass={props.hass} />
+      <PanelSection>
+        <WeatherCard hass={props.hass} />
+      </PanelSection>
+      <PanelSection>
+        <RecallCard hass={props.hass} />
+      </PanelSection>
+      <PanelSection>
+        <AlarmCard hass={props.hass} />
+      </PanelSection>
     </PanelContainer>
   );
 };

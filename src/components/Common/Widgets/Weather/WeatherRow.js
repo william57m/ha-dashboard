@@ -1,19 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import styled from '@emotion/styled';
 
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import {
-//   faCloud,
-//   faBolt,
-//   faCloudRain,
-//   faCloudShowersHeavy,
-//   faSnowflake,
-//   faSun,
-//   faSmog,
-// } from '@fortawesome/free-solid-svg-icons';
-
-// Weather icons
 import {
   DayClearIcon,
   DayPartlyCloudyIcon,
@@ -26,7 +13,6 @@ import {
   ThunderstormIcon,
 } from '../../../../resources/icon/weather';
 
-const apiKey = '6fab242a97455d7bbda28668ee6c028c';
 
 const WeatherRowContainer = styled.div`
   width: 100%;
@@ -71,27 +57,7 @@ const Image = styled.img`
 `;
 
 export function WeatherRow(props) {
-  const [weather, setWeather] = useState();
-
-  async function getWeather(city) {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    const result = (await axios.get(url)).data;
-    const weatherInfo = {
-      temp: Math.floor(result.main.temp),
-      main: result.weather[0].main,
-      city: result.name,
-      timezone: result.timezone,
-      iconId: result.weather[0].icon
-    };
-    return weatherInfo;
-  }
-
-  useEffect(() => {
-    (async function() {
-      const result = await getWeather(props.city);
-      setWeather(result);
-    })();
-  }, []);
+  const { weather } = props;
 
   function format2Digits(number) {
     return ('0' + number).slice(-2);
@@ -102,28 +68,6 @@ export function WeatherRow(props) {
 
   if (weather) {
     date = new Date(new Date().getTime() + ((14400 + weather.timezone) / 60) * 60000);
-    // switch(weather.main) {
-    //   case 'Thunderstorm':
-    //     weatherIcon = faBolt;
-    //     break;
-    //   case 'Drizzle':
-    //     weatherIcon = faCloudRain;
-    //     break;
-    //   case 'Rain':
-    //     weatherIcon = faCloudShowersHeavy;
-    //     break;
-    //   case 'Snow':
-    //     weatherIcon = faSnowflake;
-    //     break;
-    //   case 'Clear':
-    //     weatherIcon = faSun;
-    //     break;
-    //   case 'Clouds':
-    //     weatherIcon = faCloud;
-    //     break;
-    //   default:
-    //     weatherIcon = faSmog;
-    // }
     switch(weather.iconId) {
       case '01d': // Clear
         weatherIcon = DayClearIcon;
@@ -186,16 +130,12 @@ export function WeatherRow(props) {
 
   return (
     <WeatherRowContainer>
-      {weather ?
-        <React.Fragment>
-          <TimeCityContainer>
-            <Time>{format2Digits(date.getHours())}:{format2Digits(date.getMinutes())}</Time>
-            <City>{weather.city}</City>
-          </TimeCityContainer>
-          <Icon><Image src={weatherIcon} /></Icon>
-          <Temperature>{weather.temp}&#176;</Temperature>
-        </React.Fragment> : null
-      }
+      <TimeCityContainer>
+        <Time>{format2Digits(date.getHours())}:{format2Digits(date.getMinutes())}</Time>
+        <City>{weather.city}</City>
+      </TimeCityContainer>
+      <Icon><Image src={weatherIcon} /></Icon>
+      <Temperature>{weather.temp}&#176;</Temperature>
     </WeatherRowContainer>
   );
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShieldAlt, faMoon } from '@fortawesome/free-solid-svg-icons';
-import { CardContainer, SlimCard } from '../../Cards';
+import { faShieldAlt, faLock, faMoon } from '@fortawesome/free-solid-svg-icons';
+import { CardContainer, CardTitle, SlimCard } from '../../Cards';
 import { DoorRow } from './DoorRow';
 import { ProfilePicture } from './ProfilePicture';
 import PhotoWilliam from '../../../../resources/william.jpg'
@@ -13,6 +13,8 @@ import PhotoRuby from '../../../../resources/ruby.jpg'
 const AlarmCardContainer = styled(CardContainer)`
   width: 100%;
   height: initial;
+  padding: 0px;
+  cursor: unset;
 `;
 
 const Title = styled.div`
@@ -26,10 +28,27 @@ const ButtonsContainer = styled.div`
   justify-content: space-between;
 `
 
+const PaddingContainer = styled.div`
+  padding: 10px;
+`
+
+const Icon = styled(FontAwesomeIcon)`
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  color: ${props => props.state === 'disarmed' ?
+    props.theme.colors.green :
+      props.state == 'armed_night' ?
+        props.theme.colors.blue :
+          props.theme.colors.red
+  };
+`;
+
 export function AlarmCard(props) {
   const { state } = props.hass.states['alarm_control_panel.alarme'];
   const isMaina = parseInt(props.hass.states['sensor.iphone_de_maina_occupancy_confidence'].state) == 100;
   const isWilliam = parseInt(props.hass.states['sensor.iphone_de_william_occupancy_confidence'].state) == 100;
+  const icon = state == 'disarmed' ?  faShieldAlt : (state == 'armed_night' ? faMoon : faLock);
 
   function handleArmAway() {
     props.hass.callService('alarm_control_panel', 'alarm_arm_away', {
@@ -49,6 +68,10 @@ export function AlarmCard(props) {
 
   return (
     <AlarmCardContainer>
+      <CardTitle>Alarme</CardTitle>
+      <Icon icon={icon} state={state} />
+
+      <PaddingContainer>
       <Title>Etat des ouvertures</Title>
       <DoorRow entity={props.hass.states['binary_sensor.porte_entree_contact']} />
       <DoorRow entity={props.hass.states['binary_sensor.porte_balcon_contact']} />
@@ -65,14 +88,14 @@ export function AlarmCard(props) {
             <SlimCard
               logo={<FontAwesomeIcon icon={faShieldAlt} />}
               name="Armer absent"
-              onClick={handleArmAway}
+              handlePress={handleArmAway}
               height="40px"
               width="49%"
             />
             <SlimCard
               logo={<FontAwesomeIcon icon={faMoon} />}
               name="Armer nuit"
-              onClick={handleArmNight}
+              handlePress={handleArmNight}
               height="40px"
               width="49%"
             />
@@ -80,13 +103,14 @@ export function AlarmCard(props) {
           <SlimCard
             logo={<FontAwesomeIcon icon={faShieldAlt} />}
             name="Désarmer"
-            onClick={handleDisarm}
+            handlePress={handleDisarm}
             height="40px"
             width="100%"
             margin="0px"
           />
         }
       </ButtonsContainer>
+      </PaddingContainer>
     </AlarmCardContainer>
   );
 }

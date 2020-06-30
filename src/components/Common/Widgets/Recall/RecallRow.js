@@ -3,10 +3,14 @@ import styled from '@emotion/styled';
 import { CardContainer } from '../../../Common/Cards';
 
 const RecallRowContainer = styled(CardContainer)`
+  display: block;
   position: relative;
   width: 100%;
   color: ${props => props.inactive ? props.theme.colors.textMedium : props.theme.colors.textLight};
   height: initial;
+  margin: 0;
+  border-radius: unset;
+  background: none;
 `;
 
 const Description = styled.div`
