@@ -12,7 +12,7 @@ The goal is really to have one screen without any menu so I can have a global vi
 Install
 
 ```bash
-npm run install
+npm install
 ```
 
 Run a development server
