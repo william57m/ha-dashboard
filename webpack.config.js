@@ -15,13 +15,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader',
-          options: {
-            plugins: [
-              "@babel/plugin-syntax-dynamic-import",
-              "@babel/plugin-transform-react-jsx",
-            ],
-          },
+          loader: 'babel-loader'
         },
       },
       {
@@ -34,7 +28,7 @@ module.exports = {
       },
       {    
         test: /\.(woff|woff2|eot|ttf|otf)$/,
-        loader: ['file-loader']
+        use: ['file-loader']
       }
     ],
   },

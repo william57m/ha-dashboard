@@ -2,7 +2,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShieldAlt, faLock, faMoon } from '@fortawesome/free-solid-svg-icons';
-import { CardContainer, CardTitle, SlimCard } from '../../Cards';
+import { CardTitle } from '../../Cards';
+import { CardContainer, SceneCard } from 'homekit-react-components';
 import { DoorRow } from './DoorRow';
 import { ProfilePicture } from './ProfilePicture';
 import PhotoWilliam from '../../../../resources/william.jpg'
@@ -75,6 +76,7 @@ export function AlarmCard(props) {
       <Title>Etat des ouvertures</Title>
       <DoorRow entity={props.hass.states['binary_sensor.porte_entree_contact']} />
       <DoorRow entity={props.hass.states['binary_sensor.porte_balcon_contact']} />
+      <DoorRow entity={props.hass.states['binary_sensor.fenetre_chambre_contact']} />
 
       <Title>Personnes à la maison</Title>
       {isWilliam ? <ProfilePicture src={PhotoWilliam} /> : null}
@@ -85,23 +87,24 @@ export function AlarmCard(props) {
       <ButtonsContainer>
         {state === 'disarmed' ?
           <React.Fragment>
-            <SlimCard
-              logo={<FontAwesomeIcon icon={faShieldAlt} />}
+            <SceneCard
+              icon={<FontAwesomeIcon icon={faShieldAlt} />}
               name="Armer absent"
               handlePress={handleArmAway}
               height="40px"
               width="49%"
+              marginRight="6px"
             />
-            <SlimCard
-              logo={<FontAwesomeIcon icon={faMoon} />}
+            <SceneCard
+              icon={<FontAwesomeIcon icon={faMoon} />}
               name="Armer nuit"
               handlePress={handleArmNight}
               height="40px"
               width="49%"
             />
           </React.Fragment> :
-          <SlimCard
-            logo={<FontAwesomeIcon icon={faShieldAlt} />}
+          <SceneCard
+            icon={<FontAwesomeIcon icon={faShieldAlt} />}
             name="Désarmer"
             handlePress={handleDisarm}
             height="40px"

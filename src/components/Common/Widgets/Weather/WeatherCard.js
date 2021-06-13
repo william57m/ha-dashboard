@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
+import { CardContainer } from 'homekit-react-components';
 import { WeatherRow } from './WeatherRow';
-import { CardContainer, CardTitle } from '../../../Common/Cards';
+import { CardTitle } from '../../../Common/Cards';
 import { getWeather } from '../../../../stores/weather';
 
 const WeatherCardContainer = styled(CardContainer)`

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ThemeProvider } from 'emotion-theming'
+import { ThemeProvider } from '@emotion/react'
 import { Controls } from './Controls';
 import { Panel } from './Panel';
 import { theme } from '../styles/theme';

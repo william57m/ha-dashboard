@@ -24,7 +24,7 @@ export function Panel(props) {
       <TimeView />
       <DateView />
       <PanelSection>
-        <WeatherCard hass={props.hass} />
+        {/* <WeatherCard hass={props.hass} /> */}
       </PanelSection>
       <PanelSection>
         <RecallCard hass={props.hass} />

@@ -7,7 +7,7 @@ html, body, .App {
 }
 
 .App { 
-  background: url('./resources/background.png') no-repeat center center fixed; 
+  background: url('./resources/background1.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -16,7 +16,7 @@ html, body, .App {
 }
 
 .App-bg {
-  background: url('./resources/background.png') no-repeat center center fixed; 
+  background: url('./resources/background1.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -55,4 +55,18 @@ html, body, .App {
 .animate {
   animation: animate 0.8s;
   transform-origin: center;
+}
+
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
 }

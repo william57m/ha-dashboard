@@ -4,32 +4,35 @@
   "license": "ISC",
   "panelServingUrl": "/local/my-panel",
   "scripts": {
-    "start": "webpack-dev-server --watch",
+    "start": "webpack serve --watch-content-base",
     "build": "NODE_ENV=production webpack"
   },
   "dependencies": {
-    "@emotion/core": "^10.0.28",
-    "@emotion/styled": "^10.0.27",
+    "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.10",
     "axios": "^0.19.2",
-    "emotion-theming": "^10.0.27",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-modal": "^3.11.2"
+    "homekit-react-components": "file:../homekit-react-components/homekit-react-components-0.0.3.tgz",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-modal": "^3.12.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
+    "@babel/core": "^7.12.13",
+    "@babel/preset-env": "^7.12.13",
+    "@babel/preset-react": "^7.12.13",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-transform-react-jsx": "^7.10.1",
-    "babel-loader": "^8.1.0",
-    "css-loader": "^3.5.3",
-    "file-loader": "^6.0.0",
-    "style-loader": "^1.2.1",
-    "url-loader": "^4.1.0",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.0.2",
+    "file-loader": "^6.2.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

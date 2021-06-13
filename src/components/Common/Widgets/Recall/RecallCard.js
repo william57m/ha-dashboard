@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from '@emotion/styled'
+import { CardContainer } from 'homekit-react-components';
 import { RecallRow } from './RecallRow';
-import { CardContainer, CardTitle } from '../../Cards';
+import { CardTitle } from '../../Cards';
 
 const RecallCardContainer = styled(CardContainer)`
   width: 100%;

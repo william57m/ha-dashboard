@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { CardContainer } from '../../../Common/Cards';
+import { CardContainer } from 'homekit-react-components';
 
 const RecallRowContainer = styled(CardContainer)`
   display: block;
@@ -11,6 +11,7 @@ const RecallRowContainer = styled(CardContainer)`
   margin: 0;
   border-radius: unset;
   background: none;
+  padding: 10px;
 `;
 
 const Description = styled.div`

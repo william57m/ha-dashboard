@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import { Title } from '../Common';
-import { CameraCard, LightCard, SceneCard, ThermostatCard } from '../Common/HassCards';
+import { CameraCard, FanCard, LightCard, SceneCard, SensorCard, ThermostatCard } from '../../packages/hass-homekit-react-components/src';
 
 
 const ControlsContainer = styled.div`
@@ -42,21 +44,33 @@ export function Controls(props) {
         </ControlsSection>
         <ControlsSection>
           <Title>Chambre</Title>
+          <LightCard hass={hass} entityId="light.lumiere_chambre" />
           <LightCard hass={hass} entityId="light.lampe_chevet_gauche" />
           <LightCard hass={hass} entityId="light.lampe_chevet_droite" />
+        </ControlsSection>
+        <ControlsSection>
+          <Title>Bureau</Title>
+          <LightCard hass={hass} entityId="light.lumiere_bureau" />
+        </ControlsSection>
+        <ControlsSection>
+          <Title>Salle de bain</Title>
+          <LightCard hass={hass} entityId="light.lumiere_salledebain" />
+          <SensorCard hass={hass} name="Temperature" entityId="sensor.capteur_temp_sdb_temperature" value="temperature" unit="°" />
+          <SensorCard hass={hass} name="Humidité" entityId="sensor.capteur_temp_sdb_temperature" value="humidity" unit="%" />
+          <FanCard hass={hass} entityId="switch.ventilation_salle_de_bain" />
         </ControlsSection>
       </ControlsLeft>
       <ControlsRight>
         <ControlsSection>
           <Title>Scènes</Title>
           <CardContainers>
-            <SceneCard hass={hass} entityId="scene.cozy" />
-            <SceneCard hass={hass} entityId="scene.tout_eteindre" />
+            <SceneCard hass={hass} entityId="scene.cozy" icon={<FontAwesomeIcon icon={faMoon} />} />
           </CardContainers>
         </ControlsSection>
         <ControlsSection>
           <Title>Caméra</Title>
           <CameraCard hass={hass} entityId="camera.camera_sejour" />
+          <CameraCard hass={hass} entityId="camera.camera_balcon" />
         </ControlsSection>
       </ControlsRight>
     </ControlsContainer>

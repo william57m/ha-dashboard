@@ -1,1 +1,0 @@
-export { ModalLight } from './ModalLight';

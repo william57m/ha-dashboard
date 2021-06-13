@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CameraCard } from '../Cards';
+import { CameraCard } from '../../../../components/Common/Cards/CameraCard';
 
 
 export function HassCameraCard(props) {
