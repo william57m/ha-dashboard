@@ -3,7 +3,6 @@ import { LightCard } from 'homekit-react-components';
 
 export function HassLightCard(props) {
   const entity = props.hass.states[props.entityId];
-  console.log(entity);
   const { friendly_name, brightness } = entity.attributes;
   const on = entity.state && entity.state !== 'off' && entity.state != 'unavailable';
   const brightnessPercentage = Math.floor(brightness * 100/255);

@@ -9,4 +9,5 @@ export const CardTitle = styled.div`
   padding-left: 10px;
   box-sizing: border-box;
   font-size: ${props => props.theme.card.name.size};
+  font-weight: ${props => props.theme.card.name.weight};
 `;

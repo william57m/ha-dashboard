@@ -2,13 +2,13 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShieldAlt, faLock, faMoon } from '@fortawesome/free-solid-svg-icons';
-import { CardTitle } from '../../Cards';
+import { CardTitle } from '../CardTitle';
 import { CardContainer, SceneCard } from 'homekit-react-components';
 import { DoorRow } from './DoorRow';
 import { ProfilePicture } from './ProfilePicture';
-import PhotoWilliam from '../../../../resources/william.jpg'
-import PhotoMaina from '../../../../resources/maina.jpg'
-import PhotoRuby from '../../../../resources/ruby.jpg'
+import PhotoWilliam from '../../../../../resources/william.jpg'
+import PhotoMaina from '../../../../../resources/maina.jpg'
+import PhotoRuby from '../../../../../resources/ruby.jpg'
 
 
 const AlarmCardContainer = styled(CardContainer)`
@@ -74,9 +74,9 @@ export function AlarmCard(props) {
 
       <PaddingContainer>
       <Title>Etat des ouvertures</Title>
-      <DoorRow entity={props.hass.states['binary_sensor.porte_entree_contact']} />
-      <DoorRow entity={props.hass.states['binary_sensor.porte_balcon_contact']} />
-      <DoorRow entity={props.hass.states['binary_sensor.fenetre_chambre_contact']} />
+      {props.alarmSensors.map((sensorName) => (
+        <DoorRow key={sensorName} entity={props.hass.states[sensorName]} />
+      ))}
 
       <Title>Personnes à la maison</Title>
       {isWilliam ? <ProfilePicture src={PhotoWilliam} /> : null}
@@ -94,6 +94,7 @@ export function AlarmCard(props) {
               height="40px"
               width="49%"
               marginRight="6px"
+              isActive={false}
             />
             <SceneCard
               icon={<FontAwesomeIcon icon={faMoon} />}
@@ -101,6 +102,7 @@ export function AlarmCard(props) {
               handlePress={handleArmNight}
               height="40px"
               width="49%"
+              isActive={false}
             />
           </React.Fragment> :
           <SceneCard
@@ -110,6 +112,7 @@ export function AlarmCard(props) {
             height="40px"
             width="100%"
             margin="0px"
+            isActive={false}
           />
         }
       </ButtonsContainer>

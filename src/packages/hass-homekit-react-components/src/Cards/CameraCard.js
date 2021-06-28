@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CameraCard } from '../../../../components/Common/Cards/CameraCard';
+import { CameraCard } from 'homekit-react-components';
 
 
 export function HassCameraCard(props) {

@@ -11,7 +11,7 @@ import {
   ShowerIcon,
   SnowIcon,
   ThunderstormIcon,
-} from '../../../../resources/icon/weather';
+} from '../../../../../resources/icon/weather';
 
 
 const WeatherRowContainer = styled.div`

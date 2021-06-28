@@ -51,6 +51,10 @@ export const theme = {
       colorActive: colors.textMedium,
     }
   },
+  cameraCard: {
+    width: '396px',
+    height: '240px',
+  },
   sceneCard: {
     width: '206px',
     height: '48px',

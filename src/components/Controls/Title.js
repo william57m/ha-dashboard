@@ -9,7 +9,6 @@ const TitleContainer = styled.div`
   position: relative;
 `;
 
-
 export function Title(props) {
   return (
     <TitleContainer>
