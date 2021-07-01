@@ -1,3 +1,4 @@
+import regeneratorRuntime from 'regenerator-runtime';
 import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { CardContainer } from 'homekit-react-components';
@@ -12,14 +13,18 @@ const WeatherCardContainer = styled(CardContainer)`
   cursor: unset;
 `;
 
-export function WeatherCard() {
+async function loadWeathers(cities) {
+    const promises = cities.map((city) => getWeather(city));
+    const results = await Promise.all(promises);
+    return results;
+}
+export function WeatherCard(props) {
   const [weather, setWeather] = useState();
+
   useEffect(() => {
-    (async function() {
-      const promises = props.cities.map((city) => getWeather(city));
-      const results = await Promise.all(promises);
+    loadWeathers(props.cities).then((results) => {
       setWeather(results);
-    })();
+    });
   }, []);
 
   return (

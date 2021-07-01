@@ -33,9 +33,9 @@ export function Panel(props) {
     <PanelContainer>
       <TimeView />
       <DateView />
-      {/* <PanelSection>
+      <PanelSection>
         <WeatherCard hass={props.hass} cities={cities} />
-      </PanelSection> */}
+      </PanelSection>
       <PanelSection>
         <RecallCard hass={props.hass} />
       </PanelSection>
