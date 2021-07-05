@@ -6,9 +6,7 @@ import { CardTitle } from '../CardTitle'
 import { CardContainer, SceneCard } from 'homekit-react-components'
 import { DoorRow } from './DoorRow'
 import { ProfilePicture } from './ProfilePicture'
-import PhotoWilliam from '../../../../../resources/william.jpg'
-import PhotoMaina from '../../../../../resources/maina.jpg'
-import PhotoRuby from '../../../../../resources/ruby.jpg'
+
 import { HassContext } from '../../../../../context'
 import { useTranslation } from 'react-i18next'
 
@@ -46,17 +44,18 @@ const Icon = styled(FontAwesomeIcon)`
             : props.theme.colors.red};
 `
 
-export function AlarmCard(props) {
+export function AlarmCard({
+    sensors,
+    people,
+    alarm_panels,
+    alarm_state,
+    arm_away_panels,
+    arm_night_panels,
+}) {
     const hass = useContext(HassContext)
     const { t } = useTranslation('common')
 
-    const { state } = hass.states['alarm_control_panel.texe_upstairs']
-    const isMaina =
-        hass.states['device_tracker.pixel_5'].state === 'home' ? true : false
-    const isWilliam =
-        hass.states['device_tracker.pixel_4a_5g'].state === 'home'
-            ? true
-            : false
+    const { state } = hass.states[alarm_state]
     const icon =
         state == 'disarmed'
             ? faShieldAlt
@@ -65,22 +64,26 @@ export function AlarmCard(props) {
             : faLock
 
     function handleArmAway() {
-        hass.callService('alarm_control_panel', 'alarm_arm_away', {
-            entity_id: 'alarm_control_panel.texe_upstairs',
+        arm_away_panels.forEach((entity_id) => {
+            hass.callService('alarm_control_panel', 'alarm_arm_away', {
+                entity_id,
+            })
         })
     }
     function handleArmNight() {
-        hass.callService('alarm_control_panel', 'alarm_arm_night', {
-            entity_id: 'alarm_control_panel.texe_upstairs',
+        arm_night_panels.forEach((entity_id) => {
+            hass.callService('alarm_control_panel', 'alarm_arm_night', {
+                entity_id,
+            })
         })
     }
     function handleDisarm() {
-        hass.callService('alarm_control_panel', 'alarm_disarm', {
-            entity_id: 'alarm_control_panel.texe_upstairs',
+        alarm_panels.forEach((entity_id) => {
+            hass.callService('alarm_control_panel', 'alarm_disarm', {
+                entity_id,
+            })
         })
     }
-
-    console.log(props)
 
     return (
         <AlarmCardContainer>
@@ -89,7 +92,7 @@ export function AlarmCard(props) {
 
             <PaddingContainer>
                 <Title>{t('panel.alarm.sensors_state')}</Title>
-                {props.sensors.map((sensorName) => (
+                {sensors.map((sensorName) => (
                     <DoorRow
                         key={sensorName}
                         entity={hass.states[sensorName]}
@@ -97,7 +100,7 @@ export function AlarmCard(props) {
                 ))}
 
                 <Title>{t('panel.alarm.people')}</Title>
-                {props.people.map((person) => {
+                {people.map((person) => {
                     return (
                         <ProfilePicture
                             src={hass.states[person].attributes.entity_picture}

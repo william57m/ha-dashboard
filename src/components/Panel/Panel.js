@@ -57,7 +57,14 @@ function ReturnWidgets({ panel }) {
         case 'alarm':
             return (
                 <PanelSection>
-                    <AlarmCard sensors={panel.sensors} people={panel.people} />
+                    <AlarmCard
+                        alarm_state={panel.alarm_state}
+                        alarm_panels={panel.alarm_panels}
+                        arm_away_panels={panel.arm_away_panels}
+                        arm_night_panels={panel.arm_night_panels}
+                        sensors={panel.sensors}
+                        people={panel.people}
+                    />
                 </PanelSection>
             )
         default:
