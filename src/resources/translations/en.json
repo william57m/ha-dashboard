@@ -1,0 +1,19 @@
+{
+  "panel": {
+    "weather": {
+      "title": "Weather Forecast"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "inactive": "No Notifications"
+    },
+    "alarm": {
+      "title": "Alarm",
+      "sensors_state": "State Of Sensors",
+      "people": "People At Home",
+      "arm_away": "Arm Away",
+      "arm_night": "Arm Night",
+      "disarm": "Disarm"
+    }
+  }
+}

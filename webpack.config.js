@@ -1,9 +1,10 @@
 const path = require('path');
 const webpack = require('webpack');
 const package = require('./package.json');
+const ip = require('ip');
 
 const isProd = process.env.NODE_ENV === 'production';
-const publicPath = isProd ? package.panelServingUrl : 'http://0.0.0.0:8080/';
+const publicPath = isProd ? package.panelServingUrl : `http://${ip.address()}:8080/`
 const buildPath = path.resolve(__dirname, 'dist');
 
 module.exports = {
@@ -26,7 +27,7 @@ module.exports = {
         test: /\.(gif|png|jpe?g|svg)$/i,
         use: ['url-loader']
       },
-      {    
+      {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader']
       }
@@ -47,6 +48,8 @@ module.exports = {
     contentBase: buildPath,
     host: '0.0.0.0',
     port: 8080,
+    disableHostCheck: true,
+    https: false,
     headers: {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, PATCH, OPTIONS",

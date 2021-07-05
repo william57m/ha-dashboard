@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react'
 import styled from '@emotion/styled'
+import { HassContext } from '../../../../context'
 
 const DateContainer = styled.div`
-  color: ${props => props.theme.colors.textMedium};
-  font-size: 20px;
-  text-transform: capitalize;
-`;
+    color: ${(props) => props.theme.colors.textMedium};
+    font-size: 20px;
+    text-transform: capitalize;
+`
 
 export function DateView() {
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const date = new Date().toLocaleDateString('fr-FR', options);
-  return (
-    <DateContainer>
-      {date}
-    </DateContainer>
-  );
-};
+    const hass = useContext(HassContext)
+    console.log(hass)
+    const options = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    }
+    const date = new Date().toLocaleDateString(hass.locale.language, options)
+    return <DateContainer>{date}</DateContainer>
+}

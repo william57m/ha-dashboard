@@ -1,0 +1,19 @@
+{
+  "panel": {
+    "weather": {
+      "title": "Météo"
+    },
+    "notifications": {
+      "title": "Rappel",
+      "inactive": "Aucun rappel"
+    },
+    "alarm": {
+      "title": "Alarme",
+      "sensors_state": "Etat des ouvertures",
+      "people": "Personnes à la maison",
+      "arm_away": "Armer Absent",
+      "arm_night": "Armer Nuit",
+      "disarm": "Désarmer"
+    }
+  }
+}
