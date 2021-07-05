@@ -164,31 +164,6 @@ export function Controls(props) {
             {/*        />*/}
             {/*    </Components>*/}
             {/*</ControlsSection>*/}
-            {/*<ControlsRight>*/}
-            {/*    <ControlsSection>*/}
-            {/*        <Title>Scènes</Title>*/}
-            {/*        <CardContainers>*/}
-            {/*            <SceneCard*/}
-            {/*                hass={hass}*/}
-            {/*                entityId="scene.cozy"*/}
-            {/*                icon={<FontAwesomeIcon icon={faMoon} />}*/}
-            {/*            />*/}
-            {/*        </CardContainers>*/}
-            {/*    </ControlsSection>*/}
-            {/*    <ControlsSection>*/}
-            {/*        <Title>Caméra</Title>*/}
-            {/*        <Components>*/}
-            {/*            <CameraCard*/}
-            {/*                hass={hass}*/}
-            {/*                entityId="camera.camera_sejour"*/}
-            {/*            />*/}
-            {/*            <CameraCard*/}
-            {/*                hass={hass}*/}
-            {/*                entityId="camera.camera_balcon"*/}
-            {/*            />*/}
-            {/*        </Components>*/}
-            {/*    </ControlsSection>*/}
-            {/*</ControlsRight>*/}
         </ControlsContainer>
     )
 }
