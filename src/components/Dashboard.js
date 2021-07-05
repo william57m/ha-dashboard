@@ -22,9 +22,8 @@ class Dashboard extends Component {
             <ThemeProvider theme={theme}>
                 <div className="App">
                     <Panel />
-                    {/*<Controls hass={hass} />*/}
+                    <Controls />
                 </div>
-                {/* <div className="App-bg" /> */}
             </ThemeProvider>
         )
     }

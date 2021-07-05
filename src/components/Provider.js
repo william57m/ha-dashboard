@@ -8,8 +8,6 @@ import en from '../resources/translations/en.json'
 import fr from '../resources/translations/fr.json'
 
 export function Provider({ hass, showMenu, narrow, panel }) {
-    //console.log(hass)
-
     i18next.init({
         interpolation: { escapeValue: false },
         lng: hass.locale.language,

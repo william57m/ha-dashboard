@@ -56,6 +56,7 @@ export function AlarmCard({
     const { t } = useTranslation('common')
 
     const { state } = hass.states[alarm_state]
+
     const icon =
         state == 'disarmed'
             ? faShieldAlt
@@ -100,13 +101,21 @@ export function AlarmCard({
                 ))}
 
                 <Title>{t('panel.alarm.people')}</Title>
-                {people.map((person) => {
-                    return (
-                        <ProfilePicture
-                            src={hass.states[person].attributes.entity_picture}
-                            atHome={hass.states[person].state === 'home'}
-                        />
-                    )
+                {Object.values(hass.states).map((entity) => {
+                    if (entity.entity_id.startsWith('person')) {
+                        return (
+                            <ProfilePicture
+                                src={
+                                    hass.states[entity.entity_id].attributes
+                                        .entity_picture
+                                }
+                                atHome={
+                                    hass.states[entity.entity_id].state ===
+                                    'home'
+                                }
+                            />
+                        )
+                    }
                 })}
 
                 <Title>{t('panel.alarm.title')}</Title>

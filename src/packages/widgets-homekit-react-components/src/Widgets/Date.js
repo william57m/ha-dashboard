@@ -10,7 +10,6 @@ const DateContainer = styled.div`
 
 export function DateView() {
     const hass = useContext(HassContext)
-    console.log(hass)
     const options = {
         weekday: 'long',
         year: 'numeric',
