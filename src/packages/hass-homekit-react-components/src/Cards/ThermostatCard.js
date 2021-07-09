@@ -8,8 +8,11 @@ export function HassThermostatCard({ entityId, config }) {
     const entity = hass.states[entityId]
     const { friendly_name } = entity.attributes
 
-    const current_temperature = entity.attributes[config.current_temperature]
-    const target_temperature = entity.attributes[config.target_temperature]
+    const current_temperature =
+        entity.attributes[config.current_temperature] || 0
+    const target_temperature = entity.attributes[config.target_temperature] || 0
+
+    console.log(entity)
 
     const isActive =
         entity.state && entity.state !== 'off' && entity.state !== 'unavailable'
