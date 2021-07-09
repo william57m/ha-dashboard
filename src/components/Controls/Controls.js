@@ -17,33 +17,23 @@ import { useTranslation } from 'react-i18next'
 
 const ControlsContainer = styled.div`
     height: 100%;
-    width: 1300px;
+    max-width: calc(100vw - 360px);
     padding: 30px;
     box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 2rem;
 `
 
 const ControlsSection = styled.div`
     margin-bottom: 20px;
 `
 
-const ControlsLeft = styled.div`
-    margin-right: 20px;
-    float: left;
-`
-
-const ControlsRight = styled.div`
-    float: left;
-`
-
-const CardContainers = styled.div`
-    width: 400px;
-`
-
 const Components = styled.div`
-    /* display: flex; */
-
+    display: flex;
+    flex-wrap: wrap;
     & > div {
-        margin: 5px 5px 5px 0px;
+        margin: 10px 10px 0px 0px;
     }
 `
 
@@ -53,7 +43,7 @@ export function Controls(props) {
 
     return (
         <ControlsContainer>
-            <ControlsLeft>
+            <div>
                 {main_panels.map((panel) => {
                     if (panel.side === 'left') {
                         return (
@@ -61,19 +51,15 @@ export function Controls(props) {
                                 <Title>{panel.title}</Title>
                                 <Components>
                                     {panel.cards.map((entity) => {
-                                        return (
-                                            <CardReturner
-                                                entity={entity.entity}
-                                            />
-                                        )
+                                        return <CardReturner entity={entity} />
                                     })}
                                 </Components>
                             </ControlsSection>
                         )
                     }
                 })}
-            </ControlsLeft>
-            <ControlsRight>
+            </div>
+            <div>
                 {main_panels.map((panel) => {
                     if (panel.side === 'right') {
                         return (
@@ -81,89 +67,14 @@ export function Controls(props) {
                                 <Title>{panel.title}</Title>
                                 <Components>
                                     {panel.cards.map((entity) => {
-                                        return (
-                                            <CardReturner
-                                                entity={entity.entity}
-                                            />
-                                        )
+                                        return <CardReturner entity={entity} />
                                     })}
                                 </Components>
                             </ControlsSection>
                         )
                     }
                 })}
-            </ControlsRight>
-            {/*<ControlsSection>*/}
-            {/*    <Title>Séjour</Title>*/}
-            {/*    <Components>*/}
-            {/*        <LightCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="light.lampadaire_ikea"*/}
-            {/*        />*/}
-            {/*        <LightCard hass={hass} entityId="light.lumiere_salon" />*/}
-            {/*        <LightCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="light.lumiere_cuisine"*/}
-            {/*        />*/}
-            {/*        <ThermostatCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="climate.thermostat_salon_climate"*/}
-            {/*        />*/}
-            {/*    </Components>*/}
-            {/*</ControlsSection>*/}
-            {/*<ControlsSection>*/}
-            {/*    <Title>Chambre</Title>*/}
-            {/*    <Components>*/}
-            {/*        <LightCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="light.lumiere_chambre"*/}
-            {/*        />*/}
-            {/*        <LightCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="light.lampe_chevet_gauche"*/}
-            {/*        />*/}
-            {/*        <LightCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="light.lampe_chevet_droite"*/}
-            {/*        />*/}
-            {/*    </Components>*/}
-            {/*</ControlsSection>*/}
-            {/*<ControlsSection>*/}
-            {/*    <Title>Bureau</Title>*/}
-            {/*    <Components>*/}
-            {/*        <LightCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="light.lumiere_bureau"*/}
-            {/*        />*/}
-            {/*    </Components>*/}
-            {/*</ControlsSection>*/}
-            {/*<ControlsSection>*/}
-            {/*    <Title>Salle de bain</Title>*/}
-            {/*    <Components>*/}
-            {/*        <LightCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="light.lumiere_salledebain"*/}
-            {/*        />*/}
-            {/*        <SensorCard*/}
-            {/*            hass={hass}*/}
-            {/*            name="Temperature"*/}
-            {/*            entityId="sensor.capteur_temp_sdb_temperature"*/}
-            {/*            value="temperature"*/}
-            {/*            unit="°"*/}
-            {/*        />*/}
-            {/*        <SensorCard*/}
-            {/*            hass={hass}*/}
-            {/*            name="Humidité"*/}
-            {/*            entityId="sensor.capteur_temp_sdb_temperature"*/}
-            {/*            value="humidity"*/}
-            {/*            unit="%"*/}
-            {/*        />*/}
-            {/*        <FanCard*/}
-            {/*            hass={hass}*/}
-            {/*            entityId="switch.ventilation_salle_de_bain"*/}
-            {/*        />*/}
-            {/*    </Components>*/}
-            {/*</ControlsSection>*/}
+            </div>
         </ControlsContainer>
     )
 }

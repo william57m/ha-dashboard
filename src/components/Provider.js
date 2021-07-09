@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react'
+import React from 'react'
 import Dashboard from './Dashboard'
 import { ConfigurationContext, HassContext } from '../context'
 import { I18nextProvider } from 'react-i18next'

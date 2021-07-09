@@ -15,5 +15,13 @@
       "arm_night": "Arm Night",
       "disarm": "Disarm"
     }
+  },
+  "device_class": {
+    "binary_sensor": "Binary Sensor",
+    "sensor": "Sensor",
+    "light": "Light",
+    "climate": "Climate",
+    "switch": "Switch",
+    "camera": "Camera"
   }
 }

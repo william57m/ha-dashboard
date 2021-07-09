@@ -15,5 +15,13 @@
       "arm_night": "Armer Nuit",
       "disarm": "Désarmer"
     }
+  },
+  "device_class": {
+    "binary_sensor": "Capteur Binaire",
+    "sensor": "Capteur",
+    "light": "Lumière",
+    "climate": "Climat",
+    "switch": "Changer",
+    "camera": "Caméra"
   }
 }
