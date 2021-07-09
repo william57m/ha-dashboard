@@ -26,6 +26,9 @@ const Title = styled.div`
 const ButtonsContainer = styled.div`
     display: flex;
     justify-content: space-between;
+    & > div {
+        margin: 0px 5px 0px 5px;
+    }
 `
 
 const PaddingContainer = styled.div`
@@ -46,7 +49,6 @@ const Icon = styled(FontAwesomeIcon)`
 
 export function AlarmCard({
     sensors,
-    people,
     alarm_panels,
     alarm_state,
     arm_away_panels,
@@ -126,17 +128,12 @@ export function AlarmCard({
                                 icon={<FontAwesomeIcon icon={faShieldAlt} />}
                                 name={t('panel.alarm.arm_away')}
                                 handlePress={handleArmAway}
-                                height="40px"
-                                width="49%"
-                                marginRight="6px"
                                 isActive={false}
                             />
                             <SceneCard
                                 icon={<FontAwesomeIcon icon={faMoon} />}
                                 name={t('panel.alarm.arm_night')}
                                 handlePress={handleArmNight}
-                                height="40px"
-                                width="49%"
                                 isActive={false}
                             />
                         </React.Fragment>
@@ -145,9 +142,6 @@ export function AlarmCard({
                             icon={<FontAwesomeIcon icon={faShieldAlt} />}
                             name={t('panel.alarm.disarm')}
                             handlePress={handleDisarm}
-                            height="40px"
-                            width="100%"
-                            margin="0px"
                             isActive={false}
                         />
                     )}
