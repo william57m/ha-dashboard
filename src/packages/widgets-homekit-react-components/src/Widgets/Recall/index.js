@@ -1,1 +1,1 @@
-export { RecallCard } from './RecallCard';
+export { RecallCard } from './RecallCard'

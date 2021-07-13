@@ -1,16 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react'
 
-import { CameraCard } from 'homekit-react-components';
-
+import { CameraCard } from 'homekit-react-components'
+import { HassContext } from '../../../../context'
 
 export function HassCameraCard(props) {
-  const entity = props.hass.states[props.entityId];
-  const { friendly_name, entity_picture } = entity.attributes;
+    const hass = useContext(HassContext)
 
-  return (
-    <CameraCard
-      name={friendly_name}
-      imageSrc={entity_picture}
-    />
-  );
+    const entity = hass.states[props.entityId]
+    const { friendly_name, entity_picture } = entity.attributes
+
+    return <CameraCard name={friendly_name} imageSrc={entity_picture} />
 }

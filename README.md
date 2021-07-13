@@ -32,7 +32,25 @@ panel_custom:
     js_url: http://host:port/main.js
     embed_iframe: true
     config:
-      name: World
+      sidebar_panels:
+        - type: time
+        - type: date
+        - type: weather
+          cities:
+            - London
+            - Manchester
+            - Glasgow
+        - type: notifications
+        - type: alarm
+          alarm_panels:
+            - alarm_control_panel.upstairs
+          people:
+            - person.ben
+            - person.julie
+          sensors:
+            - binary_sensor.texe_cloakroom_pir
+            - binary_sensor.texe_front_door
+            - binary_sensor.texe_kitchen_window
 ```
 
 Restart Home Assistant.
