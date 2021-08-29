@@ -9,6 +9,12 @@ const buildPath = path.resolve(__dirname, 'dist');
 module.exports = {
   mode: isProd ? 'production' : 'development',
   entry: './src/index.js',
+  resolve: {
+    alias: {
+      react: path.resolve('./node_modules/react'),
+      '@emotion/react': path.resolve('./node_modules/@emotion/react')
+    }
+  },
   module: {
     rules: [
       {
